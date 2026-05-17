@@ -14,8 +14,5 @@ GitHub에서 다음 설정을 켜면 테스트 URL로 플레이할 수 있습니
 2. `Pages` 메뉴 선택
 3. `Build and deployment`에서 `Deploy from a branch` 선택
 4. Branch: `main`, Folder: `/root` 선택
-5. 저장 후 1~3분 대기
 
-예상 URL:
-
-`https://mecagun9.github.io/flight-recon-board/`
+https://mecagun9.github.io/flight-recon-board/
