@@ -10,10 +10,7 @@
     <main class="app">
       <section class="desk" aria-label="비행계획 정찰 데스크">
         <header class="topbar">
-          <div>
-            <p class="eyebrow">Recon Flight Board</p>
-            <h1>비행계획 정찰</h1>
-          </div>
+          <div><p class="eyebrow">Recon Flight Board</p><h1>비행계획 정찰</h1></div>
           <div class="scoreboard" aria-live="polite">
             <span>스테이지 <strong id="stageNumber">1</strong></span>
             <span>공개 비용 <strong id="revealCost">2</strong></span>
@@ -21,10 +18,7 @@
         </header>
         <div class="workspace">
           <aside class="casefile" aria-label="비행 의뢰서">
-            <div class="case-header">
-              <div><p class="label">비행 의뢰서</p><h2 id="stageName">-</h2></div>
-              <span id="planStatus" class="stamp">작성중</span>
-            </div>
+            <div class="case-header"><div><p class="label">비행 의뢰서</p><h2 id="stageName">-</h2></div><span id="planStatus" class="stamp">작성중</span></div>
             <dl class="manifest">
               <div><dt>크레딧</dt><dd><strong id="credits">0</strong></dd></div>
               <div><dt>출발</dt><dd id="startCoord">-</dd></div>
@@ -32,32 +26,15 @@
               <div><dt>목표</dt><dd id="objective">-</dd></div>
               <div><dt>보드</dt><dd id="gridSize">-</dd></div>
             </dl>
-            <section class="evidence-panel">
-              <div class="section-title"><h3>정찰 기록</h3><button id="clearLog" type="button">기록 정리</button></div>
-              <ul id="reconLog" class="evidence-list"></ul>
-            </section>
-            <section class="evidence-panel journal-panel">
-              <div class="section-title"><h3>정찰 저널</h3><span class="mini-label">플립 전 힌트</span></div>
-              <div id="journalList" class="journal-list"></div>
-            </section>
-            <section class="rulebook">
-              <h3>계획 규정</h3>
-              <ul>
-                <li>덮인 타일은 크레딧을 써서 먼저 공개해야 한다.</li>
-                <li>공개된 타일만 비행경로에 포함할 수 있다.</li>
-                <li>상하좌우 연결 방향이 맞아야 다음 타일로 이동할 수 있다.</li>
-              </ul>
-            </section>
+            <section class="evidence-panel"><div class="section-title"><h3>정찰 기록</h3><button id="clearLog" type="button">기록 정리</button></div><ul id="reconLog" class="evidence-list"></ul></section>
+            <section class="evidence-panel journal-panel"><div class="section-title"><h3>정찰 저널</h3><span class="mini-label">플립 전 힌트</span></div><div id="journalList" class="journal-list"></div></section>
+            <section class="rulebook"><h3>계획 규정</h3><ul><li>탐색모드에서는 크레딧으로 덮인 타일을 공개한다.</li><li>자유경로모드에서는 미확인 타일 위로도 경로를 그릴 수 있다.</li><li>크레딧이 0이 되면 비상 자유경로모드로 자동 전환된다.</li></ul></section>
           </aside>
           <section class="map-panel" aria-label="정찰 보드">
-            <div class="map-toolbar">
-              <div><p class="label">정찰 보드</p><h2 id="briefingTitle">항로 미확정</h2></div>
-              <div class="actions"><button id="undoRoute" type="button">되돌리기</button><button id="resetRoute" type="button">경로 초기화</button></div>
-            </div>
+            <div class="map-toolbar"><div><p class="label">정찰 보드</p><h2 id="briefingTitle">항로 미확정</h2></div><div class="actions"><button id="exploreMode" type="button">탐색모드</button><button id="freeMode" type="button">자유경로모드</button><button id="undoRoute" type="button">되돌리기</button><button id="resetRoute" type="button">경로 초기화</button></div></div>
+            <p id="modeBanner" class="mode-banner">탐색모드: 크레딧을 사용해 덮인 타일을 공개합니다.</p>
             <div class="grid-shell"><div id="flightGrid" class="flight-grid" aria-label="격자형 정찰 지도"></div></div>
-            <div class="legend" aria-label="타일 설명">
-              <span><i class="legend-dot route"></i>항로</span><span><i class="legend-dot storm"></i>폭풍</span><span><i class="legend-dot enemy"></i>적 정찰</span><span><i class="legend-dot supply"></i>보급</span><span><i class="legend-dot signal"></i>교신탑</span><span><i class="legend-dot blocked"></i>막힘</span><span><i class="legend-dot covered"></i>덮임</span>
-            </div>
+            <div class="legend" aria-label="타일 설명"><span><i class="legend-dot route"></i>항로</span><span><i class="legend-dot storm"></i>폭풍</span><span><i class="legend-dot enemy"></i>적 정찰</span><span><i class="legend-dot supply"></i>보급</span><span><i class="legend-dot signal"></i>교신탑</span><span><i class="legend-dot blocked"></i>막힘</span><span><i class="legend-dot covered"></i>덮임</span></div>
             <div class="route-strip"><p class="label">비행경로</p><ol id="selectedRoute"></ol></div>
             <div class="decision-bar"><button id="submitPlan" class="primary" type="button">비행계획 접수</button></div>
           </section>
@@ -65,14 +42,9 @@
       </section>
       <aside class="briefing" aria-label="비행계획 요약">
         <h2>비행계획 요약</h2>
-        <p id="feedback" class="feedback">덮인 타일을 열어 항로를 확인한 뒤, 목적지까지 이어지는 공개 경로를 접수하세요.</p>
-        <dl class="summary">
-          <div><dt>현재 위험도</dt><dd id="riskScore">0</dd></div>
-          <div><dt>예상 보상</dt><dd><span id="expectedReward">0</span> 크레딧</dd></div>
-          <div><dt>구간 수</dt><dd id="pathLength">1</dd></div>
-        </dl>
-        <h3>발견 이벤트</h3><ul id="eventList" class="history"></ul>
-        <h3>접수 기록</h3><ul id="history" class="history"></ul>
+        <p id="feedback" class="feedback">덮인 타일을 열어 항로를 확인한 뒤, 목적지까지 이어지는 경로를 접수하세요.</p>
+        <dl class="summary"><div><dt>확정 위험도</dt><dd id="confirmedRisk">0</dd></div><div><dt>미확인 구간</dt><dd id="uncertainCount">0</dd></div><div><dt>미확인 위험</dt><dd id="uncertainRisk">0</dd></div><div><dt>총 위험도</dt><dd id="riskScore">0</dd></div><div><dt>예상 보상</dt><dd><span id="expectedReward">0</span> 크레딧</dd></div><div><dt>구간 수</dt><dd id="pathLength">1</dd></div></dl>
+        <h3>발견 이벤트</h3><ul id="eventList" class="history"></ul><h3>접수 기록</h3><ul id="history" class="history"></ul>
       </aside>
     </main>
     <script src="game.js"></script>
